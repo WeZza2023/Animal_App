@@ -1,0 +1,12 @@
+"images": [
+             {
+               "id": 3,
+               "path": "public/images/1716027321Capture.PNG",
+               "animal_id": 16
+             },
+             {
+               "id": 4,
+               "path": "public/images/1716027321cgi-services-lifestyle-rendering.jpg",
+               "animal_id": 16
+             }
+           ]
