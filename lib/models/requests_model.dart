@@ -1,3 +1,4 @@
+import 'package:animal_app/generated/l10n.dart';
 import 'package:intl/intl.dart';
 
 class GetRequestsModel {
@@ -74,22 +75,22 @@ class Data {
     return data;
   }
 
-  String getDuration() {
+  String getDuration(context) {
     if (createdAt == null) return "Unknown";
     final createdAtDate = DateTime.parse(createdAt!);
     final duration = DateTime.now().difference(createdAtDate);
-    return _formatDuration(duration);
+    return _formatDuration(duration,context);
   }
 
-  String _formatDuration(Duration duration) {
+  String _formatDuration(Duration duration,context) {
     if (duration.inDays > 0) {
-      return "${duration.inDays} day(s) ago";
+      return "${S.of(context).ago} ${duration.inDays} ${S.of(context).days}";
     } else if (duration.inHours > 0) {
-      return "${duration.inHours} hour(s) ago";
+      return "${S.of(context).ago} ${duration.inHours} ${S.of(context).hours}";
     } else if (duration.inMinutes > 0) {
-      return "${duration.inMinutes} minute(s) ago";
+      return "${S.of(context).ago} ${duration.inMinutes} ${S.of(context).minutes}";
     } else {
-      return "Just now";
+      return S.of(context).justNow;
     }
   }
 }

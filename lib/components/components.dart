@@ -336,8 +336,10 @@ Widget MyRatingItem({
 Widget NotificationItem({
   required String time,
   required String title,
+  required String subTitle,
   required Function() onTap,
   required String location,
+  required ThemeImageIcon image,
 }) =>
     InkWell(
       onTap: onTap,
@@ -361,10 +363,10 @@ Widget NotificationItem({
           children: [
             Row(
               children: [
-                Image.asset(
-                  "assets/icons/dog.png",
-                  width: 50,
-                  height: 50,
+                ThemeImageIconWidget(
+                  image,
+                  color: Colors.black,
+                  scale: 1,
                 ),
                 const SizedBox(
                   width: 12,
@@ -377,7 +379,7 @@ Widget NotificationItem({
                       weight: FontWeight.bold,
                     ).bP8,
                     BodyMediumText(
-                      title,
+                      subTitle,
                       weight: FontWeight.bold,
                       color: Colors.grey,
                     ),
@@ -465,14 +467,25 @@ Widget CountryCodesSheet({
 
 Widget AppLoadingProgress() =>  Center(
   child: ClipRRect(
-      borderRadius: BorderRadius.circular(50),
+      borderRadius: BorderRadius.circular(200),
       child: LottieBuilder.asset(
         "assets/icons/loading.json",
-        height: 100,
-        width: 100,
+        height: 50,
+        width: 50,
         repeat: true,
       )),
 );
+
+Widget AppLoadingFailed() =>  Center(
+  child: LottieBuilder.asset(
+    "assets/icons/fail.json",
+    height: 100,
+    width: 100,
+    repeat: true,
+  ),
+);
+
+
 
 
 Widget ViewAnimalItem({required String text, double? height}) => Container(

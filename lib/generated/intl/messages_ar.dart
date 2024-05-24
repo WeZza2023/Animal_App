@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addedAnimalSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم اضافة الحيوان بنجاح"),
         "adoptionReason": MessageLookupByLibrary.simpleMessage("سبب التبني"),
+        "ago": MessageLookupByLibrary.simpleMessage("منذ"),
         "animalAge": MessageLookupByLibrary.simpleMessage("عمر الحيوان"),
         "animalDescription":
             MessageLookupByLibrary.simpleMessage("وصف الحيوان"),
@@ -46,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUs": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "continueWith": MessageLookupByLibrary.simpleMessage("الاستمرار عبر"),
         "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
+        "days": MessageLookupByLibrary.simpleMessage("ايام "),
         "discover": MessageLookupByLibrary.simpleMessage("اكتشف"),
         "doYouHaveAccount": MessageLookupByLibrary.simpleMessage("لديك حساب؟"),
         "dog": MessageLookupByLibrary.simpleMessage("كلب"),
@@ -61,7 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "google": MessageLookupByLibrary.simpleMessage("غوغل"),
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "home": MessageLookupByLibrary.simpleMessage("الرئيسية"),
+        "hours": MessageLookupByLibrary.simpleMessage("ساعات"),
         "id": MessageLookupByLibrary.simpleMessage("الرمز التعريفي"),
+        "justNow": MessageLookupByLibrary.simpleMessage("الان"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "loginError":
             MessageLookupByLibrary.simpleMessage("خطأ في تسجيل الدخول."),
@@ -69,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تسجيل الدخول بنجاح."),
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل خروج"),
         "male": MessageLookupByLibrary.simpleMessage("ذكر"),
+        "minutes": MessageLookupByLibrary.simpleMessage("دقائق"),
         "more": MessageLookupByLibrary.simpleMessage("المزيد"),
         "myAdoptedAnimals":
             MessageLookupByLibrary.simpleMessage("حيواناتي الاليفه"),
@@ -77,7 +82,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "noMoreResults":
             MessageLookupByLibrary.simpleMessage("لا يوجد نتائج اخرى"),
+        "noNotifications":
+            MessageLookupByLibrary.simpleMessage("لا يوجد اشعارات"),
         "notReceived": MessageLookupByLibrary.simpleMessage("غير مستلم"),
+        "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
         "numOfAdoptedAnimals":
             MessageLookupByLibrary.simpleMessage("عدد الحيوانات الاليفه"),
         "numOfPets":
@@ -101,7 +109,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("سعر الحيوان"),
         "processError": MessageLookupByLibrary.simpleMessage(
             "حدثت مشكله اثناء العمليه, برجاء المحاوله مره اخرى"),
+        "purchaseNow": MessageLookupByLibrary.simpleMessage("ادفع الان"),
         "received": MessageLookupByLibrary.simpleMessage("تم استلام"),
+        "receivedNotifications":
+            MessageLookupByLibrary.simpleMessage("الاشعارات الواردة"),
         "register": MessageLookupByLibrary.simpleMessage("تسجيل جديد"),
         "reject": MessageLookupByLibrary.simpleMessage("رفض"),
         "rejected": MessageLookupByLibrary.simpleMessage("مرفوض"),
@@ -120,7 +131,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("3. قم بارسال الرمز التحقيقي"),
         "step4": MessageLookupByLibrary.simpleMessage("4. العودة الى التطبيق"),
         "step5": MessageLookupByLibrary.simpleMessage("5. انقر على تم"),
+        "thisOrderIsPending": MessageLookupByLibrary.simpleMessage(
+            "هذا الطلب معلق, يرجى الانتظار"),
+        "thisOrderIsRefused":
+            MessageLookupByLibrary.simpleMessage("هذا الطلب مرفوض"),
         "title": MessageLookupByLibrary.simpleMessage("Flutter Example App"),
+        "toCompleteYourOrderPleaseDoThePaymentProcess":
+            MessageLookupByLibrary.simpleMessage(
+                "لاكمال الطلب الخاص بك، يرجى تنفيذ عملية الدفع"),
         "verifyYourEmailWhatsapp": MessageLookupByLibrary.simpleMessage(
             "تحقق من بريدك الالكتروني بواسطة واتساب"),
         "youdidnotAdoptanyAnimal":

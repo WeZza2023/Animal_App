@@ -47,11 +47,11 @@ class HomeCubit extends Cubit<HomeState> {
   ThemeImageIcon selectedCatTabIcon = ThemeImageIcon.cat;
   ThemeImageIcon selectedDogTabIcon = ThemeImageIcon.dog;
 
-  void ChangeBottomNavBar(int index) {
+  Future<void> ChangeBottomNavBar(int index) async{
     currentNavIndex = index;
 
     if (currentNavIndex == 1) {
-      getRequests();
+     await getRequests();
     }
     emit(IsNavChangedState());
   }
@@ -106,9 +106,9 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ClearPickedImagesState());
   }
 
-  void getAnimals({required int currentPage}) {
+  Future<void> getAnimals({required int currentPage}) async {
     emit(GetAnimalsLoadingState());
-    DioHelper.getData(
+   await DioHelper.getData(
             url: "${ApiConstants.animal}?page=$currentPage",
             token: ApiConstants.userToken)
         .then((value) {
@@ -146,7 +146,7 @@ class HomeCubit extends Cubit<HomeState> {
       'images': imageFiles,
     };
     print(json);
-    DioHelper.postData(
+   await DioHelper.postData(
       url: ApiConstants.addAnimal,
       token: ApiConstants.userToken,
       data: FormData.fromMap(json),
@@ -167,7 +167,7 @@ class HomeCubit extends Cubit<HomeState> {
     required String animalId,
   }) async {
     emit(BuyAnimalLoadingState());
-    DioHelper.postData(
+   await DioHelper.postData(
       url: ApiConstants.buy,
       data: {
         'animal_id': animalId,
@@ -187,7 +187,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> getRequests() async {
     emit(GetRequestsLoadingState());
-    DioHelper.getData(url: ApiConstants.requests, token: ApiConstants.userToken)
+   await DioHelper.getData(url: ApiConstants.requests, token: ApiConstants.userToken)
         .then((value) {
       logger.d(value.data);
       getRequestsModel = GetRequestsModel.fromJson(value.data);
@@ -203,9 +203,9 @@ class HomeCubit extends Cubit<HomeState> {
     await DioHelper.getData(
             url: ApiConstants.getNotifications, token: ApiConstants.userToken)
         .then((value) {
-      print(value.data);
+      logger.d(value.data);
       print("Get Notifications Success");
-      // getNotificationsModel = GetNotificationsModel.fromJson(value.data);
+      getNotificationsModel = GetNotificationsModel.fromJson(value.data);
       emit(GetNotificationsSuccessState(getNotificationsModel!));
     }).catchError((error) {
       print(error.toString());
@@ -218,7 +218,7 @@ class HomeCubit extends Cubit<HomeState> {
     required String orderId,
   }) async {
     emit(AcceptRequestLoadingState());
-    DioHelper.postData(
+   await DioHelper.postData(
         url: ApiConstants.accept,
         token: ApiConstants.userToken,
         data: {
@@ -238,7 +238,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> rejectRequest({required String orderId}) async {
     emit(AcceptRequestLoadingState());
-    DioHelper.postData(
+   await DioHelper.postData(
         url: ApiConstants.refuse,
         token: ApiConstants.userToken,
         data: {

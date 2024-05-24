@@ -76,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 )),
             IconButton(
                 onPressed: () {
+                  cubit.getNotifications();
                   Navigator.pushNamed(context, NotificationsScreen.id);
                 },
                 icon: const Icon(

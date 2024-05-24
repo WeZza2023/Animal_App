@@ -82,5 +82,17 @@
   "reject" : "Reject",
   "youdidnotRequestanyAnimal" : "You did not request any animal.",
   "youdidnotAdoptanyAnimal" : "You did not adopt any animal.",
-  "noMoreResults" : "No more results"
+  "noMoreResults" : "No more results",
+  "notifications": "Notification",
+  "noNotifications": "No Notification",
+  "receivedNotifications": "Received notification",
+  "ago" : "ago",
+  "days" : "day(s)",
+  "hours" : "hour(s)",
+  "minutes" : "minute(s)",
+  "justNow" : "Just now",
+  "thisOrderIsRefused" : "This order is refused",
+  "thisOrderIsPending" : "This order is pending",
+  "purchaseNow" : "Purchase Now",
+  "toCompleteYourOrderPleaseDoThePaymentProcess" : "To complete your order, please do the purchase process"
 }

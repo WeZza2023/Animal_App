@@ -839,6 +839,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Notification`
+  String get notifications {
+    return Intl.message(
+      'Notification',
+      name: 'notifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Notification`
+  String get noNotifications {
+    return Intl.message(
+      'No Notification',
+      name: 'noNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Received notification`
+  String get receivedNotifications {
+    return Intl.message(
+      'Received notification',
+      name: 'receivedNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `ago`
+  String get ago {
+    return Intl.message(
+      'ago',
+      name: 'ago',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `day(s)`
+  String get days {
+    return Intl.message(
+      'day(s)',
+      name: 'days',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `hour(s)`
+  String get hours {
+    return Intl.message(
+      'hour(s)',
+      name: 'hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minute(s)`
+  String get minutes {
+    return Intl.message(
+      'minute(s)',
+      name: 'minutes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Just now`
+  String get justNow {
+    return Intl.message(
+      'Just now',
+      name: 'justNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This order is refused`
+  String get thisOrderIsRefused {
+    return Intl.message(
+      'This order is refused',
+      name: 'thisOrderIsRefused',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `This order is pending`
+  String get thisOrderIsPending {
+    return Intl.message(
+      'This order is pending',
+      name: 'thisOrderIsPending',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Purchase Now`
+  String get purchaseNow {
+    return Intl.message(
+      'Purchase Now',
+      name: 'purchaseNow',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To complete your order, please do the purchase process`
+  String get toCompleteYourOrderPleaseDoThePaymentProcess {
+    return Intl.message(
+      'To complete your order, please do the purchase process',
+      name: 'toCompleteYourOrderPleaseDoThePaymentProcess',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

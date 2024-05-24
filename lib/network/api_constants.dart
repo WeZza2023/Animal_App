@@ -9,7 +9,7 @@ class ApiConstants {
   static const String buy = 'buy';
   static const String storeToken = 'store-token';
   static const String myProfile = 'profile';
-  static const String getNotifications = '';
+  static const String getNotifications = 'user/orderstoreply';
   static const String requests = 'user/order';
   static const String accept = 'order/accept';
   static const String refuse = 'order/refuse';

@@ -11,34 +11,34 @@ class GetAnimalsModel {
 }
 
 class Data {
-  late int currentPage;
+  late String currentPage;
   List<Animal>? animals;
   late String firstPageUrl;
-  late int from;
-  late int lastPage;
+  late String from;
+  late String lastPage;
   late String lastPageUrl;
   List<Link>? links;
   String? nextPageUrl;
   late String path;
-  late int perPage;
+  late String perPage;
   String? prevPageUrl;
-  late int to;
-  late int total;
+  late String to;
+  late String total;
 
   Data.fromJson(Map<String, dynamic> json) {
-    currentPage = json['current_page'];
+    currentPage = json['current_page'].toString();
     animals = json['data'] != null ? (json['data'] as List).map((i) => Animal.fromJson(i)).toList() : null;
     firstPageUrl = json['first_page_url'];
-    from = json['from'];
-    lastPage = json['last_page'];
+    from = json['from'].toString();
+    lastPage = json['last_page'].toString();
     lastPageUrl = json['last_page_url'];
     links = json['links'] != null ? (json['links'] as List).map((i) => Link.fromJson(i)).toList() : null;
     nextPageUrl = json['next_page_url'];
     path = json['path'];
-    perPage = json['per_page'];
+    perPage = json['per_page'].toString();
     prevPageUrl = json['prev_page_url'];
-    to = json['to'];
-    total = json['total'];
+    to = json['to'].toString();
+    total = json['total'].toString();
   }
 }
 

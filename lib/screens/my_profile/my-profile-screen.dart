@@ -64,67 +64,69 @@ class MyProfileScreen extends StatelessWidget {
           ),
           width: AppSizes.getScreenWidth(context),
           child: SingleChildScrollView(
-            child: state is LoadingMyProfileState || cubit.myProfileModel == null ?  Center(child: AppLoadingProgress()).tP25 :
-                 Column(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      AppDivider(
-                              categoryName: "حسابك ذهبي", color: Colors.yellow)
-                          .bP16,
-                      Container(
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                          border: BorderDirectional(
-                              start: BorderSide(width: 2, color: Colors.yellow),
-                              end: BorderSide(width: 2, color: Colors.yellow),
-                              bottom:
-                                  BorderSide(width: 2, color: Colors.yellow)),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+              child: state is LoadingMyProfileState ||
+                      cubit.myProfileModel == null
+                  ? Center(child: AppLoadingProgress()).tP25
+                  : Column(
+                      children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        AppDivider(
+                                categoryName: "حسابك ذهبي",
+                                color: Colors.yellow)
+                            .bP16,
+                        Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            border: BorderDirectional(
+                                start:
+                                    BorderSide(width: 2, color: Colors.yellow),
+                                end: BorderSide(width: 2, color: Colors.yellow),
+                                bottom:
+                                    BorderSide(width: 2, color: Colors.yellow)),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
                           ),
-                        ),
-                        child: Column(
-                          children: [
-                            MoreItem(
-                                    title:
-                                        "${S.of(context).name} : ${cubit.myProfileModel!.data!.name}",
-                                    onTap: () {})
-                                .tP8,
-                            MoreItem(
-                                title:
-                                    "${S.of(context).id} : ${cubit.myProfileModel!.data!.id} ",
-                                onTap: () {}),
-                            MoreItem(
-                                title:
-                                    "${S.of(context).email} : ${cubit.myProfileModel!.data!.email}",
-                                onTap: () {}),
-                            MoreItem(
-                                    title:
-                                        "${S.of(context).phone} : ${cubit.myProfileModel!.data!.phone}",
-                                    onTap: () {})
-                                .bP25,
+                          child: Column(
+                            children: [
+                              MoreItem(
+                                      title:
+                                          "${S.of(context).name} : ${cubit.myProfileModel!.data!.name}",
+                                      onTap: () {})
+                                  .tP8,
+                              MoreItem(
+                                  title:
+                                      "${S.of(context).id} : ${cubit.myProfileModel!.data!.id} ",
+                                  onTap: () {}),
+                              MoreItem(
+                                  title:
+                                      "${S.of(context).email} : ${cubit.myProfileModel!.data!.email}",
+                                  onTap: () {}),
+                              MoreItem(
+                                      title:
+                                          "${S.of(context).phone} : ${cubit.myProfileModel!.data!.phone}",
+                                      onTap: () {})
+                                  .bP25,
 
-                            // MoreItem(title: "${S.of(context).myPets} : ", onTap: () {}),
-                            // MoreItem(
-                            //     title: "${S.of(context).myAdoptedAnimals} : ",
-                            //     onTap: () {})
-                            //     .bP25,
-                            defaultTextButton(
-                                text: S.of(context).logout,
-                                function: () {
-                                  cubit.logout();
-                                  Navigator.pushReplacementNamed(
-                                      context, LoginScreen.id);
-                                }).hP16.bP8
-                          ],
-                        ),
-                      ).hP16
-                    ],
-                  )
-
-          ),
+                              // MoreItem(title: "${S.of(context).myPets} : ", onTap: () {}),
+                              // MoreItem(
+                              //     title: "${S.of(context).myAdoptedAnimals} : ",
+                              //     onTap: () {})
+                              //     .bP25,
+                              defaultTextButton(
+                                  text: S.of(context).logout,
+                                  function: () {
+                                    cubit.logout();
+                                    Navigator.pushReplacementNamed(
+                                        context, LoginScreen.id);
+                                  }).hP16.bP8
+                            ],
+                          ),
+                        ).hP16
+                      ],
+                    )),
         ),
       ),
     );

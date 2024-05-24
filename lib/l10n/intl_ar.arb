@@ -82,5 +82,18 @@
   "reject" : "رفض",
   "youdidnotRequestanyAnimal" : "لم تقم بطلب اي حيوان",
   "youdidnotAdoptanyAnimal" : "لم تقم بتبني اي حيوان",
-  "noMoreResults" : "لا يوجد نتائج اخرى"
+  "noMoreResults" : "لا يوجد نتائج اخرى",
+  "notifications" : "الاشعارات",
+  "noNotifications" : "لا يوجد اشعارات",
+  "receivedNotifications" : "الاشعارات الواردة",
+  "ago" : "منذ",
+  "days" : "ايام ",
+  "hours" : "ساعات",
+  "minutes" : "دقائق",
+  "justNow" : "الان",
+  "thisOrderIsRefused" : "هذا الطلب مرفوض",
+  "thisOrderIsPending" : "هذا الطلب معلق, يرجى الانتظار",
+  "purchaseNow" : "ادفع الان",
+  "toCompleteYourOrderPleaseDoThePaymentProcess" : "لاكمال الطلب الخاص بك، يرجى تنفيذ عملية الدفع"
+
 }

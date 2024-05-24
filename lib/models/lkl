@@ -1,12 +1,144 @@
-"images": [
-             {
-               "id": 3,
-               "path": "public/images/1716027321Capture.PNG",
-               "animal_id": 16
-             },
-             {
-               "id": 4,
-               "path": "public/images/1716027321cgi-services-lifestyle-rendering.jpg",
-               "animal_id": 16
-             }
-           ]
+🐛 {
+  "data": [
+    {
+      "id": 49,
+      "user_id": 3,
+      "animal_id": 47,
+      "title": null,
+      "fee": "1002",
+      "created_at": "2024-05-23T16:03:36.000000Z",
+      "updated_at": "2024-05-23T19:12:30.000000Z",
+      "status": "pending",
+      "owner_id": 1,
+      "animal": {
+        "id": 47,
+        "title": "animal name",
+        "location": "jada",
+        "type": "type one",
+        "age": "21",
+        "sex": "male",
+        "adapt_reason": "here is the reason of adapting",
+        "created_at": "2024-05-22T20:52:32.000000Z",
+        "updated_at": "2024-05-22T20:52:32.000000Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 11,
+            "path": "images/1716411152Capture.PNG",
+            "animal_id": 47
+          },
+          {
+            "id": 12,
+            "path": "images/1716411158cgi-services-lifestyle-rendering.jpg",
+            "animal_id": 47
+          }
+        ]
+      }
+    },
+    {
+      "id": 50,
+      "user_id": 3,
+      "animal_id": 48,
+      "title": null,
+      "fee": null,
+      "created_at": "2024-05-23T20:33:27.000000Z",
+      "updated_at": "2024-05-23T20:33:27.000000Z",
+      "status": "pending",
+      "owner_id": 1,
+      "animal": {
+        "id": 48,
+        "title": "animal name",
+        "location": "jada",
+        "type": "type one",
+        "age": "21",
+        "sex": "male",
+        "adapt_reason": "here is the reason of adapting",
+        "created_at": "2024-05-22T21:48:59.000000Z",
+        "updated_at": "2024-05-22T21:48:59.000000Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 13,
+            "path": "images/1716414539Capture.PNG",
+            "animal_id": 48
+          },
+          {
+            "id": 14,
+            "path": "images/1716414539cgi-services-lifestyle-rendering.jpg",
+            "animal_id": 48
+          }
+        ]
+      }
+    },
+    {
+      "id": 51,
+      "user_id": 3,
+      "animal_id": 47,
+      "title": null,
+      "fee": null,
+      "created_at": "2024-05-23T20:59:50.000000Z",
+      "updated_at": "2024-05-23T21:14:47.000000Z",
+      "status": "refused",
+      "owner_id": 1,
+      "animal": {
+        "id": 47,
+        "title": "animal name",
+        "location": "jada",
+        "type": "type one",
+        "age": "21",
+        "sex": "male",
+        "adapt_reason": "here is the reason of adapting",
+        "created_at": "2024-05-22T20:52:32.000000Z",
+        "updated_at": "2024-05-22T20:52:32.000000Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 11,
+            "path": "images/1716411152Capture.PNG",
+            "animal_id": 47
+          },
+          {
+            "id": 12,
+            "path": "images/1716411158cgi-services-lifestyle-rendering.jpg",
+            "animal_id": 47
+          }
+        ]
+      }
+    },
+    {
+      "id": 52,
+      "user_id": 3,
+      "animal_id": 47,
+      "title": null,
+      "fee": null,
+      "created_at": "2024-05-23T21:22:55.000000Z",
+      "updated_at": "2024-05-23T21:22:55.000000Z",
+      "status": "pending",
+      "owner_id": 1,
+      "animal": {
+        "id": 47,
+        "title": "animal name",
+        "location": "jada",
+        "type": "type one",
+        "age": "21",
+        "sex": "male",
+        "adapt_reason": "here is the reason of adapting",
+        "created_at": "2024-05-22T20:52:32.000000Z",
+        "updated_at": "2024-05-22T20:52:32.000000Z",
+        "user_id": 1,
+        "images": [
+          {
+            "id": 11,
+            "path": "images/1716411152Capture.PNG",
+            "animal_id": 47
+          },
+          {
+            "id": 12,
+            "path": "images/1716411158cgi-services-lifestyle-rendering.jpg",
+            "animal_id": 47
+          }
+        ]
+      }
+    }
+  ]
+}

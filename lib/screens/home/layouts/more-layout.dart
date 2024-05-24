@@ -1,11 +1,13 @@
 import 'package:animal_app/components/components.dart';
 import 'package:animal_app/extention/extetion.dart';
+import 'package:animal_app/screens/home/home-cubit.dart';
 import 'package:animal_app/screens/login/login_screen.dart';
 import 'package:animal_app/screens/my_adopted/my_adopted_screen.dart';
 import 'package:animal_app/screens/my_pets/my_pets_screen.dart';
 import 'package:animal_app/screens/my_ratings/my_ratings_screen.dart';
 import 'package:animal_app/shared_prefs/network.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../generated/l10n.dart';
 
 class MoreLayout extends StatelessWidget {
@@ -13,9 +15,11 @@ class MoreLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var cubit = BlocProvider.of<HomeCubit>(context);
     return Column(
       children: [
         MoreItem(title: S.of(context).myPets,icon: Icons.pets_rounded,onTap: (){
+          cubit.getRequests();
           Navigator.pushNamed(context, MyPetsScreen.id);
         }).tP8,
         MoreItem(title: S.of(context).myAdoptedAnimals,icon: Icons.pets_rounded,onTap: (){

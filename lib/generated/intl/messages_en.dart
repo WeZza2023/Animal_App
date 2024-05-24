@@ -30,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Added animal successfully"),
         "adoptionReason":
             MessageLookupByLibrary.simpleMessage("Adoption Reason"),
+        "ago": MessageLookupByLibrary.simpleMessage("ago"),
         "animalAge": MessageLookupByLibrary.simpleMessage("Animal Age"),
         "animalDescription":
             MessageLookupByLibrary.simpleMessage("Animal Description"),
@@ -48,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "continueWith": MessageLookupByLibrary.simpleMessage("Continue with"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+        "days": MessageLookupByLibrary.simpleMessage("day(s)"),
         "discover": MessageLookupByLibrary.simpleMessage("Discover"),
         "doYouHaveAccount":
             MessageLookupByLibrary.simpleMessage("Do you have an account?"),
@@ -64,13 +66,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "google": MessageLookupByLibrary.simpleMessage("Google"),
         "help": MessageLookupByLibrary.simpleMessage("Help"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "hours": MessageLookupByLibrary.simpleMessage("hour(s)"),
         "id": MessageLookupByLibrary.simpleMessage("ID"),
+        "justNow": MessageLookupByLibrary.simpleMessage("Just now"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "loginError": MessageLookupByLibrary.simpleMessage("Login failed."),
         "loginSuccessfully":
             MessageLookupByLibrary.simpleMessage("Login successfully."),
         "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "minutes": MessageLookupByLibrary.simpleMessage("minute(s)"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "myAdoptedAnimals":
             MessageLookupByLibrary.simpleMessage("My Adopted Animals"),
@@ -79,7 +84,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "noMoreResults":
             MessageLookupByLibrary.simpleMessage("No more results"),
+        "noNotifications":
+            MessageLookupByLibrary.simpleMessage("No Notification"),
         "notReceived": MessageLookupByLibrary.simpleMessage("Not Received"),
+        "notifications": MessageLookupByLibrary.simpleMessage("Notification"),
         "numOfAdoptedAnimals":
             MessageLookupByLibrary.simpleMessage("Number of Adopted Animals"),
         "numOfPets": MessageLookupByLibrary.simpleMessage("Number of Pets"),
@@ -102,7 +110,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "price": MessageLookupByLibrary.simpleMessage("Price"),
         "processError": MessageLookupByLibrary.simpleMessage(
             "Something went wrong, please try again"),
+        "purchaseNow": MessageLookupByLibrary.simpleMessage("Purchase Now"),
         "received": MessageLookupByLibrary.simpleMessage("Received"),
+        "receivedNotifications":
+            MessageLookupByLibrary.simpleMessage("Received notification"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "rejected": MessageLookupByLibrary.simpleMessage("Rejected"),
@@ -122,7 +133,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("3. Send the code to verify."),
         "step4": MessageLookupByLibrary.simpleMessage("4. Return to the app."),
         "step5": MessageLookupByLibrary.simpleMessage("5. Click on done."),
+        "thisOrderIsPending":
+            MessageLookupByLibrary.simpleMessage("This order is pending"),
+        "thisOrderIsRefused":
+            MessageLookupByLibrary.simpleMessage("This order is refused"),
         "title": MessageLookupByLibrary.simpleMessage("Flutter Example App"),
+        "toCompleteYourOrderPleaseDoThePaymentProcess":
+            MessageLookupByLibrary.simpleMessage(
+                "To complete your order, please do the purchase process"),
         "verifyYourEmailWhatsapp": MessageLookupByLibrary.simpleMessage(
             "Verify your email with whatsapp"),
         "youdidnotAdoptanyAnimal": MessageLookupByLibrary.simpleMessage(

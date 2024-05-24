@@ -95,12 +95,7 @@ class ProductItem extends StatelessWidget {
                     return AppLoadingProgress();
                   },
                   errorBuilder: (context, error, stackTrace) =>
-                      LottieBuilder.asset(
-                    "assets/icons/fail.json",
-                    height: 100,
-                    width: 100,
-                    repeat: true,
-                  ),
+                  AppLoadingFailed(),
                   image,
                   height: 90,
                   width: 100,
