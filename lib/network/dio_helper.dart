@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 class DioHelper {
   static late Dio dioMain;
-  static late Dio dioWhatsapp;
+  // static late Dio dioWhatsapp;
 
   static init() {
     dioMain = Dio(BaseOptions(
@@ -11,10 +11,10 @@ class DioHelper {
       receiveDataWhenStatusError: true,
 
     ));
-    dioWhatsapp = Dio(BaseOptions(
-      baseUrl: ApiConstants.whatsAppVerificationBaseUrl,
-      receiveDataWhenStatusError: true,
-    ));
+    // dioWhatsapp = Dio(BaseOptions(
+    //   baseUrl: ApiConstants.whatsAppVerificationBaseUrl,
+    //   receiveDataWhenStatusError: true,
+    // ));
   }
 
   static Future<Response> getData({
@@ -30,17 +30,17 @@ class DioHelper {
     return await dioMain.get(url, queryParameters: query);
   }
 
-  static Future<Response> getWhatsappAuth({
-    required String url,
-    Map<String, dynamic>? query,
-    String? token,
-  }) async {
-    dioWhatsapp.options.headers = {
-      'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json',
-    };
-    return await dioWhatsapp.get(url, queryParameters: query);
-  }
+  // static Future<Response> getWhatsappAuth({
+  //   required String url,
+  //   Map<String, dynamic>? query,
+  //   String? token,
+  // }) async {
+  //   dioWhatsapp.options.headers = {
+  //     'Authorization': 'Bearer $token',
+  //     'Content-Type': 'application/json',
+  //   };
+  //   return await dioWhatsapp.get(url, queryParameters: query);
+  // }
 
   static Future<Response> postData({
     required String url,

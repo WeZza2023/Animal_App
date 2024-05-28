@@ -2,8 +2,9 @@ import 'package:animal_app/components/components.dart';
 import 'package:animal_app/extention/extetion.dart';
 import 'package:animal_app/screens/home/home-cubit.dart';
 import 'package:animal_app/screens/login/login_screen.dart';
-import 'package:animal_app/screens/my_adopted/my_adopted_screen.dart';
-import 'package:animal_app/screens/my_pets/my_pets_screen.dart';
+import 'package:animal_app/screens/my_adopted/my_pets_cubit.dart';
+import 'package:animal_app/screens/my_adopted/my_pets_screen.dart';
+import 'package:animal_app/screens/my_pets/my_adopted_screen.dart';
 import 'package:animal_app/screens/my_ratings/my_ratings_screen.dart';
 import 'package:animal_app/shared_prefs/network.dart';
 import 'package:flutter/material.dart';
@@ -15,15 +16,17 @@ class MoreLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = BlocProvider.of<HomeCubit>(context);
+    var homeCubit = BlocProvider.of<HomeCubit>(context);
+    var myPetsCubit = BlocProvider.of<MyPetsCubit>(context);
     return Column(
       children: [
         MoreItem(title: S.of(context).myPets,icon: Icons.pets_rounded,onTap: (){
-          cubit.getRequests();
-          Navigator.pushNamed(context, MyPetsScreen.id);
+          homeCubit.getRequests();
+          Navigator.pushNamed(context, MyAdoptedAnimalScreen.id);
         }).tP8,
         MoreItem(title: S.of(context).myAdoptedAnimals,icon: Icons.pets_rounded,onTap: (){
-          Navigator.pushNamed(context, MyAdoptedScreen.id);
+          myPetsCubit.getMyPets();
+          Navigator.pushNamed(context, MyPetsAnimalScreen.id);
         }),
         MoreItem(title: S.of(context).myRatings,icon: Icons.star,onTap: (){
           Navigator.pushNamed(context, MyRatingsScreen.id);

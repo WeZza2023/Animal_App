@@ -1,6 +1,8 @@
 class ApiConstants {
 
   static const String baseUrl = 'https://timon.pw/api/';
+  // static const String baseUrl = 'https://d524-196-153-171-51.ngrok-free.app/api/';
+  static const String test = 'test';
   static const String baseUrlNOAPI = 'https://timon.pw/';
   static const String register = 'register';
   static const String login = 'login';
@@ -8,14 +10,18 @@ class ApiConstants {
   static const String addAnimal = 'animal/create';
   static const String buy = 'buy';
   static const String storeToken = 'store-token';
+  static const String getMyAnimals = 'myanimal';
+  static const String search = 'animal/search';
   static const String myProfile = 'profile';
   static const String getNotifications = 'user/orderstoreply';
   static const String requests = 'user/order';
   static const String accept = 'order/accept';
   static const String refuse = 'order/refuse';
   static const String sendNotification = 'send-web-notification';
-  static const String whatsAppVerificationBaseUrl = 'https://whatsauth.me/api/v1/';
-  static const String verify = 'verification_code';
+  static const String verifyUser = 'email/verify';
+  static const String resend = 'email/resend';
+  // static const String whatsAppVerificationBaseUrl = 'https://whatsauth.me/api/v1/';
+  // static const String verify = 'verification_code';
   static  String userToken = '';
   static  String userId = '';
   static  String? deviceToken;

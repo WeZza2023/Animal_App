@@ -10,8 +10,8 @@ import 'package:animal_app/screens/home/home-state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MyPetsScreen extends StatelessWidget {
-  const MyPetsScreen({super.key});
+class MyAdoptedAnimalScreen extends StatelessWidget {
+  const MyAdoptedAnimalScreen({super.key});
   static String id = 'MyPetsScreen';
 
   @override

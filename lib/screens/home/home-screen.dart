@@ -70,9 +70,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 onPressed: () {
                   cubit.changeSearchBar();
                 },
-                icon: const Icon(
+                focusColor: Colors.white,
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(cubit.searchIconColor),
+                ),
+                icon: Icon(
                   Icons.search_rounded,
-                  color: Colors.white,
+                  color: cubit.iconColor,
                 )),
             IconButton(
                 onPressed: () {
@@ -88,7 +93,6 @@ class _HomeScreenState extends State<HomeScreen> {
               onTap: () {
                 BlocProvider.of<MyProfileCubit>(context).getMyProfile();
                 Navigator.pushNamed(context, MyProfileScreen.id);
-
               },
               child: ThemeImageIconWidget(
                 ThemeImageIcon.person,
@@ -118,7 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           width: AppSizes.getScreenWidth(context),
           child: SingleChildScrollView(
-
             child: Column(
               children: [
                 cubit.layouts[cubit.currentNavIndex],

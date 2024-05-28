@@ -32,96 +32,158 @@ class SignupScreen extends StatelessWidget {
     var cubit = BlocProvider.of<SignupCubit>(context);
 
     return BlocConsumer<SignupCubit, SignupState>(
-      listener: (context, state) => {
-        if (state is SignupSuccessState)
-          {
-            if (state.registerModel.success == true)
-              {
-                print(state.registerModel.message),
-                print(state.registerModel.token),
-                CacheHelper.saveData(
-                  key: 'id',
-                  value: state.registerModel.data!.id.toString(),
-                ),
-                CacheHelper.saveData(
-                  key: 'token',
-                  value: state.registerModel.token,
-                ).then((value) async {
-                  await cubit.getDeviceToken();
-                  ApiConstants.userToken = state.registerModel.token;
-                  ApiConstants.userId = state.registerModel.data!.id.toString();
-                }),
-              }
-            else
-              {
-                print(state.registerModel.message),
-              }
-          }
-        else if (state is SignupErrorState)
-          {
-            ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(
-                content: S.of(context).signupError, color: Colors.red))
-          },
-        if (state is VerificationSuccessState)
-          {
-            print(state.verifyModel.deep_link),
-            showDialog(
-              context: context,
-              builder: (context) {
-                return SizedBox(
-                  child: AlertDialog(
-                    content: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          BodyMediumText(S.of(context).step1).bP8,
-                          BodyMediumText(S.of(context).step2).bP8,
-                          BodyMediumText(S.of(context).step3).bP8,
-                          BodyMediumText(S.of(context).step4).bP8,
-                          BodyMediumText(S.of(context).step5).bP8,
-                          Link(
-                            uri: Uri.parse(state.verifyModel.link),
-                            builder: (context, followLink) => InkWell(
-                                onTap: () {
-                                  cubit.openVerifyLink(
-                                      Uri.parse(state.verifyModel.link));
-                                },
-                                child: BodyMediumText(
-                                  state.verifyModel.deep_link,
-                                  color: Colors.blue,
-                                  isUnderlined: true,
-                                )),
-                          )
-                        ],
-                      ),
-                    ),
-                    title: Center(child: BodyLargeText(S.of(context).logout)),
-                    actions: [
-                      defaultTextButton(
-                        text: S.of(context).done,
-                        function: () {
-                          // Navigator.pop(context);
-                          Navigator.pushReplacementNamed(
-                              context, HomeScreen.id);
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              AppSnackBar(
-                                  content: S.of(context).loginSuccessfully,
-                                  color: Colors.green));
-                        },
-                      )
+      listener: (context, state) =>{
+        if (state is VerificationModelSuccessState) {
+          cubit.reSendCounter(),
+          showDialog(
+            context: context,
+            builder: (context) {
+              return BlocConsumer<SignupCubit, SignupState>(
+                listener: (context, state) {},
+                builder: (context, state) => SizedBox(
+                  child: AppPopupDialog(
+                    body: [
+                      BodyMediumText(S.of(context).step1).bP8,
+                      BodyMediumText(S.of(context).step2).bP8,
+                      BodyMediumText(S.of(context).step3).bP8,
+                      BodyMediumText(S.of(context).step4).bP8,
                     ],
+                    title: S.of(context).confirmYourEmail,
+                    textB1: S.of(context).done,
+                    textB2: cubit.reSendTime > 0 && cubit.reSendTime != 10
+                        ? cubit.reSendTime.toString()
+                        : S.of(context).resend,
+                    onTapB1: () {
+                      // cubit.isVerifiedUser(email: emailController.text);
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, HomeScreen.id, (route) => false);
+                    },
+                    onTapB2: () {
+                      // cubit.reSendCounter();
+                    },
+                    colorB2:
+                    cubit.reSendTime > 0 && cubit.reSendTime != 10
+                        ? Colors.grey
+                        : KDefaultColor,
                   ),
-                );
-              },
-            )
+                ),
+              );
+            },
+          ),
+        }else if(state is VerificationModelErrorState)
+        {
+          if (state.verificationErrorModel!.errors!.phone != null)
+            {
+                ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(
+                    content:
+                        state.verificationErrorModel!.errors!.phone!.toString(),
+                    color: Colors.red))
+              }
+            else{},
+          if (state.verificationErrorModel!.errors!.email != null)
+            {
+                ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(
+                    content:
+                        state.verificationErrorModel!.errors!.email!.toString(),
+                    color: Colors.red))
+              }else {},
+        }else if(state is VerificationErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(
+              content: S.of(context).processError, color: Colors.red))
           }
-        else if (state is VerificationErrorState)
-          {
-            ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(
-                content: S.of(context).processError, color: Colors.red))
-          },
-        if (state is GetDeviceTokenState)
-          {cubit.storeToken(token: ApiConstants.deviceToken)}
       },
+      // {
+      //   if (state is VerificationModelSuccessState)
+      //     {
+      //       if (state.verificationModel.success == true)
+      //         {
+      //           print(state.verificationModel.message),
+      //
+      //           // CacheHelper.saveData(
+      //           //   key: 'id',
+      //           //   value: state.registerModel.data!.id.toString(),
+      //           // ),
+      //           // CacheHelper.saveData(
+      //           //   key: 'token',
+      //           //   value: state.registerModel.token,
+      //           // ).then((value) async {
+      //           //   await cubit.getDeviceToken();
+      //           //   ApiConstants.userToken = state.registerModel.token;
+      //           //   ApiConstants.userId = state.registerModel.data!.id.toString();
+      //           // }),
+      //
+
+      //         }
+      //       else
+      //         {
+      //           print(state.verificationModel.message),
+      //         }
+      //     }
+      //   else if (state is VerificationErrorState)
+      //     {
+      //       ScaffoldMessenger.of(context).showSnackBar(
+      //           AppSnackBar(content: state.error, color: Colors.red))
+      //     },
+      //   // if (state is VerificationSuccessState)
+      //   //   {
+      //   //     print(state.verifyModel.deep_link),
+      //   //     showDialog(
+      //   //       context: context,
+      //   //       builder: (context) {
+      //   //         return SizedBox(
+      //   //           child: AlertDialog(
+      //   //             content: SingleChildScrollView(
+      //   //               child: Column(
+      //   //                 children: [
+      //   //                   BodyMediumText(S.of(context).step1).bP8,
+      //   //                   BodyMediumText(S.of(context).step2).bP8,
+      //   //                   BodyMediumText(S.of(context).step3).bP8,
+      //   //                   BodyMediumText(S.of(context).step4).bP8,
+      //   //                   BodyMediumText(S.of(context).step5).bP8,
+      //   //                   Link(
+      //   //                     uri: Uri.parse(state.verifyModel.link),
+      //   //                     builder: (context, followLink) => InkWell(
+      //   //                         onTap: () {
+      //   //                           cubit.openVerifyLink(
+      //   //                               Uri.parse(state.verifyModel.link));
+      //   //                         },
+      //   //                         child: BodyMediumText(
+      //   //                           state.verifyModel.deep_link,
+      //   //                           color: Colors.blue,
+      //   //                           isUnderlined: true,
+      //   //                         )),
+      //   //                   )
+      //   //                 ],
+      //   //               ),
+      //   //             ),
+      //   //             title: Center(child: BodyLargeText(S.of(context).logout)),
+      //   //             actions: [
+      //   //               defaultTextButton(
+      //   //                 text: S.of(context).done,
+      //   //                 function: () {
+      //   //                   // Navigator.pop(context);
+      //   //                   Navigator.pushReplacementNamed(
+      //   //                       context, HomeScreen.id);
+      //   //                   ScaffoldMessenger.of(context).showSnackBar(
+      //   //                       AppSnackBar(
+      //   //                           content: S.of(context).loginSuccessfully,
+      //   //                           color: Colors.green));
+      //   //                 },
+      //   //               )
+      //   //             ],
+      //   //           ),
+      //   //         );
+      //   //       },
+      //   //     )
+      //   //   }
+      //   // else if (state is VerificationErrorState)
+      //   //   {
+      //   //     ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(
+      //   //         content: S.of(context).processError, color: Colors.red))
+      //   //   },
+      //   // if (state is GetDeviceTokenState)
+      //   //   {cubit.storeToken(token: ApiConstants.deviceToken)}
+      // },
       builder: (context, state) => Scaffold(
         backgroundColor: KBackgroundColor,
         body: SingleChildScrollView(
@@ -172,7 +234,7 @@ class SignupScreen extends StatelessWidget {
                         );
                       },
                       child: BodyMediumText(
-                        '${cubit.countryCode}',
+                        cubit.countryCode,
                         color: KDefaultColor,
                         weight: FontWeight.bold,
                       ),
@@ -215,8 +277,7 @@ class SignupScreen extends StatelessWidget {
                           cubit.isPassShow();
                         }),
                   ).bP25,
-                  state is SignupLoadingState ||
-                          state is VerificationLoadingState
+                  state is VerificationLoadingState
                       ? const CircularProgressIndicator(
                           color: KDefaultColor,
                         ).bP25
@@ -224,12 +285,21 @@ class SignupScreen extends StatelessWidget {
                           width: AppSizes.getScreenWidth(context) / 1.3,
                           function: () async {
                             if (formKey.currentState!.validate()) {
-                              if (cubit.countryCode != "-  -") {
-                                await cubit.userRegister(
-                                    name: nameController.text,
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                    phone: phoneController.text);
+                              if (cubit.countryCode != "-  -" ) {
+                                if (passwordController.text.length > 10) {
+                                  await cubit.userRegister(
+                                      name: nameController.text,
+                                      email: emailController.text,
+                                      password: passwordController.text,
+                                      phone: phoneController.text);
+                                }else{
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    AppSnackBar(
+                                        content:
+                                        S.of(context).chooseStrongerPassword,
+                                        color: Colors.red),
+                                  );
+                                }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   AppSnackBar(

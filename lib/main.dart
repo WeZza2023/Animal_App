@@ -7,7 +7,7 @@ import 'package:animal_app/screens/home/home-cubit.dart';
 import 'package:animal_app/screens/home/home-screen.dart';
 import 'package:animal_app/screens/login/login-cubit.dart';
 import 'package:animal_app/screens/login/login_screen.dart';
-import 'package:animal_app/screens/my_pets/my_pets_screen.dart';
+import 'package:animal_app/screens/my_pets/my_adopted_screen.dart';
 import 'package:animal_app/screens/my_profile/my-profile-screen.dart';
 import 'package:animal_app/screens/my_ratings/my_ratings_screen.dart';
 import 'package:animal_app/screens/notifications/notifications_screen.dart';
@@ -22,7 +22,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'generated/l10n.dart';
-import 'screens/my_adopted/my_adopted_screen.dart';
+import 'screens/my_adopted/my_pets_cubit.dart';
+import 'screens/my_adopted/my_pets_screen.dart';
 import 'screens/my_profile/my-profile-cubit.dart';
 import 'screens/notifications/notifications_cubit.dart';
 
@@ -70,6 +71,7 @@ class AnimalApp extends StatelessWidget {
         BlocProvider<HomeCubit>(create: (context) => HomeCubit()),
         BlocProvider<MyProfileCubit>(create: (context) => MyProfileCubit()),
         BlocProvider<NotificationsCubit>(create: (context) => NotificationsCubit()),
+        BlocProvider<MyPetsCubit>(create: (context) => MyPetsCubit())
       ],
       child: MaterialApp(
         locale: const Locale('ar'),
@@ -87,11 +89,10 @@ class AnimalApp extends StatelessWidget {
           SignupScreen.id: (context) => SignupScreen(),
           HomeScreen.id: (context) => const HomeScreen(),
           MyProfileScreen.id: (context) =>  MyProfileScreen(),
-          MyPetsScreen.id: (context) => const MyPetsScreen(),
-          MyAdoptedScreen.id: (context) => const MyAdoptedScreen(),
+          MyAdoptedAnimalScreen.id: (context) => const MyAdoptedAnimalScreen(),
+          MyPetsAnimalScreen.id: (context) => const MyPetsAnimalScreen(),
           MyRatingsScreen.id: (context) => const MyRatingsScreen(),
           NotificationsScreen.id: (context) => const NotificationsScreen(),
-          // ViewAnimalScreen.id: (context) =>  ViewAnimalScreen(),
         },
         initialRoute: initialId,
       ),

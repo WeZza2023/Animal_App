@@ -1,6 +1,7 @@
 import 'package:animal_app/models/get_animals_model.dart';
 import 'package:animal_app/models/get_notifications_model.dart';
 import 'package:animal_app/models/requests_model.dart';
+import 'package:animal_app/models/search_model.dart';
 
 abstract class HomeState {}
 
@@ -10,7 +11,7 @@ class IsTabChangedState extends HomeState {}
 
 class IsNavChangedState extends HomeState {}
 
-class ChangeOpacityPageState extends HomeState{}
+class ChangeOpacityPageState extends HomeState {}
 
 class IsSearchBarShownState extends HomeState {}
 
@@ -23,12 +24,11 @@ class GetAnimalsLoadingState extends HomeState {}
 class GetAnimalsSuccessState extends HomeState {
   final GetAnimalsModel getAnimalsModel;
   GetAnimalsSuccessState(this.getAnimalsModel);
-
 }
 
 class GetAnimalsErrorState extends HomeState {
   final String error;
-  GetAnimalsErrorState (this.error);
+  GetAnimalsErrorState(this.error);
 }
 
 class AddAnimalLoadingState extends HomeState {}
@@ -37,14 +37,12 @@ class AddAnimalSuccessState extends HomeState {}
 
 class AddAnimalErrorState extends HomeState {
   final String error;
-  AddAnimalErrorState (this.error);
+  AddAnimalErrorState(this.error);
 }
 
 class BuyAnimalLoadingState extends HomeState {}
 
-class BuyAnimalSuccessState extends HomeState {
-
-}
+class BuyAnimalSuccessState extends HomeState {}
 
 class BuyAnimalErrorState extends HomeState {
   final String error;
@@ -86,7 +84,7 @@ class GetNotificationsErrorState extends HomeState {
   GetNotificationsErrorState(this.error);
 }
 
-class ChangeCurrentPageState extends HomeState{}
+class ChangeCurrentPageState extends HomeState {}
 
 class AcceptRequestLoadingState extends HomeState {}
 
@@ -104,4 +102,16 @@ class RejectRequestSuccessState extends HomeState {}
 class RejectRequestErrorState extends HomeState {
   final String error;
   RejectRequestErrorState(this.error);
+}
+
+class SearchAnimalLoadingState extends HomeState {}
+
+class SearchAnimalSuccessState extends HomeState {
+  final SearchModel searchModel;
+  SearchAnimalSuccessState(this.searchModel);
+}
+
+class SearchAnimalErrorState extends HomeState {
+  final String error;
+  SearchAnimalErrorState(this.error);
 }

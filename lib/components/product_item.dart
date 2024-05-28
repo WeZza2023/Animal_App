@@ -95,7 +95,7 @@ class ProductItem extends StatelessWidget {
                     return AppLoadingProgress();
                   },
                   errorBuilder: (context, error, stackTrace) =>
-                  AppLoadingFailed(),
+                  AppLoadingFailed(big: true),
                   image,
                   height: 90,
                   width: 100,

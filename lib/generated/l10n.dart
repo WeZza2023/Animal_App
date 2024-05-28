@@ -670,6 +670,16 @@ class S {
     );
   }
 
+  /// `Choose stronger password`
+  String get chooseStrongerPassword {
+    return Intl.message(
+      'Choose stronger password',
+      name: 'chooseStrongerPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Select your country code`
   String get selectyourcountrycode {
     return Intl.message(
@@ -710,51 +720,41 @@ class S {
     );
   }
 
-  /// `1. Ensure that you enter a valid phone number.`
+  /// `1. Check your email in your inbox.`
   String get step1 {
     return Intl.message(
-      '1. Ensure that you enter a valid phone number.',
+      '1. Check your email in your inbox.',
       name: 'step1',
       desc: '',
       args: [],
     );
   }
 
-  /// `2. Click on the link below.`
+  /// `2. Verify your email.`
   String get step2 {
     return Intl.message(
-      '2. Click on the link below.',
+      '2. Verify your email.',
       name: 'step2',
       desc: '',
       args: [],
     );
   }
 
-  /// `3. Send the code to verify.`
+  /// `3. Return to the app.`
   String get step3 {
     return Intl.message(
-      '3. Send the code to verify.',
+      '3. Return to the app.',
       name: 'step3',
       desc: '',
       args: [],
     );
   }
 
-  /// `4. Return to the app.`
+  /// `4. Click on done.`
   String get step4 {
     return Intl.message(
-      '4. Return to the app.',
+      '4. Click on done.',
       name: 'step4',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `5. Click on done.`
-  String get step5 {
-    return Intl.message(
-      '5. Click on done.',
-      name: 'step5',
       desc: '',
       args: [],
     );
@@ -955,6 +955,86 @@ class S {
     return Intl.message(
       'To complete your order, please do the purchase process',
       name: 'toCompleteYourOrderPleaseDoThePaymentProcess',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You did not post any animal`
+  String get youDidNotPostAnyAnimal {
+    return Intl.message(
+      'You did not post any animal',
+      name: 'youDidNotPostAnyAnimal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is no animal with this name`
+  String get thereIsNoAnimalWithThisName {
+    return Intl.message(
+      'There is no animal with this name',
+      name: 'thereIsNoAnimalWithThisName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your request has been sent successfully`
+  String get yourRequestHasBeenSentSuccessfully {
+    return Intl.message(
+      'Your request has been sent successfully',
+      name: 'yourRequestHasBeenSentSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is no results in this page`
+  String get thereIsNoResultsInThisPage {
+    return Intl.message(
+      'There is no results in this page',
+      name: 'thereIsNoResultsInThisPage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can move to the next page`
+  String get youCanMoveToTheNextPage {
+    return Intl.message(
+      'You can move to the next page',
+      name: 'youCanMoveToTheNextPage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There is no animals added yet`
+  String get thereIsNoAnimalsAddedYet {
+    return Intl.message(
+      'There is no animals added yet',
+      name: 'thereIsNoAnimalsAddedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message(
+      'Resend',
+      name: 'resend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm your email`
+  String get confirmYourEmail {
+    return Intl.message(
+      'Confirm your email',
+      name: 'confirmYourEmail',
       desc: '',
       args: [],
     );

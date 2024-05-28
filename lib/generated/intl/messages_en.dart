@@ -42,10 +42,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cat": MessageLookupByLibrary.simpleMessage("Cat"),
         "cats": MessageLookupByLibrary.simpleMessage("Cats"),
+        "chooseStrongerPassword":
+            MessageLookupByLibrary.simpleMessage("Choose stronger password"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "commonQuestions":
             MessageLookupByLibrary.simpleMessage("Common Questions"),
         "confirmPost": MessageLookupByLibrary.simpleMessage("Confirm Post"),
+        "confirmYourEmail":
+            MessageLookupByLibrary.simpleMessage("Confirm your email"),
         "contactUs": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "continueWith": MessageLookupByLibrary.simpleMessage("Continue with"),
         "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
@@ -118,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "reject": MessageLookupByLibrary.simpleMessage("Reject"),
         "rejected": MessageLookupByLibrary.simpleMessage("Rejected"),
         "requests": MessageLookupByLibrary.simpleMessage("Requests"),
+        "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "search": MessageLookupByLibrary.simpleMessage("Search ..."),
         "selectyourcountrycode":
             MessageLookupByLibrary.simpleMessage("Select your country code"),
@@ -126,13 +131,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "signupSuccessfully": MessageLookupByLibrary.simpleMessage(
             "Account created successfully."),
         "step1": MessageLookupByLibrary.simpleMessage(
-            "1. Ensure that you enter a valid phone number."),
-        "step2":
-            MessageLookupByLibrary.simpleMessage("2. Click on the link below."),
-        "step3":
-            MessageLookupByLibrary.simpleMessage("3. Send the code to verify."),
-        "step4": MessageLookupByLibrary.simpleMessage("4. Return to the app."),
-        "step5": MessageLookupByLibrary.simpleMessage("5. Click on done."),
+            "1. Check your email in your inbox."),
+        "step2": MessageLookupByLibrary.simpleMessage("2. Verify your email."),
+        "step3": MessageLookupByLibrary.simpleMessage("3. Return to the app."),
+        "step4": MessageLookupByLibrary.simpleMessage("4. Click on done."),
+        "thereIsNoAnimalWithThisName": MessageLookupByLibrary.simpleMessage(
+            "There is no animal with this name"),
+        "thereIsNoAnimalsAddedYet": MessageLookupByLibrary.simpleMessage(
+            "There is no animals added yet"),
+        "thereIsNoResultsInThisPage": MessageLookupByLibrary.simpleMessage(
+            "There is no results in this page"),
         "thisOrderIsPending":
             MessageLookupByLibrary.simpleMessage("This order is pending"),
         "thisOrderIsRefused":
@@ -143,9 +151,16 @@ class MessageLookup extends MessageLookupByLibrary {
                 "To complete your order, please do the purchase process"),
         "verifyYourEmailWhatsapp": MessageLookupByLibrary.simpleMessage(
             "Verify your email with whatsapp"),
+        "youCanMoveToTheNextPage": MessageLookupByLibrary.simpleMessage(
+            "You can move to the next page"),
+        "youDidNotPostAnyAnimal":
+            MessageLookupByLibrary.simpleMessage("You did not post any animal"),
         "youdidnotAdoptanyAnimal": MessageLookupByLibrary.simpleMessage(
             "You did not adopt any animal."),
         "youdidnotRequestanyAnimal": MessageLookupByLibrary.simpleMessage(
-            "You did not request any animal.")
+            "You did not request any animal."),
+        "yourRequestHasBeenSentSuccessfully":
+            MessageLookupByLibrary.simpleMessage(
+                "Your request has been sent successfully")
       };
 }

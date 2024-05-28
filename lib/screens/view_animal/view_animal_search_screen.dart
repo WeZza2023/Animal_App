@@ -10,12 +10,12 @@ import 'package:animal_app/screens/home/home-state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ViewAnimalNotificationScreen extends StatelessWidget {
-  const ViewAnimalNotificationScreen({
+class ViewAnimalSearchScreen extends StatelessWidget {
+  const ViewAnimalSearchScreen({
     super.key,
     required this.outIndex,
   });
-  static String id = 'ViewAnimalNotificationScreen';
+  static String id = 'ViewAnimalSearchScreen';
   final int outIndex;
 
   @override
@@ -23,13 +23,14 @@ class ViewAnimalNotificationScreen extends StatelessWidget {
     var cubit = BlocProvider.of<HomeCubit>(context);
     return BlocConsumer<HomeCubit, HomeState>(
       listener: (context, state) {
-        if (state is AcceptRequestSuccessState) {
-          cubit.getNotifications();
+        if (state is BuyAnimalSuccessState) {
           Navigator.pop(context);
-        }
-        if (state is RejectRequestSuccessState) {
-          cubit.getNotifications();
-          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(AppSnackBar(
+              content: S.of(context).yourRequestHasBeenSentSuccessfully,
+              color: Colors.green));
+        } else if (state is BuyAnimalErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              AppSnackBar(content: state.error, color: Colors.red));
         }
       },
       builder: (context, state) => Scaffold(
@@ -68,29 +69,25 @@ class ViewAnimalNotificationScreen extends StatelessWidget {
                 Column(
                   children: [
                     ViewAnimalItem(
-                      text: cubit.getNotificationsModel!.data![outIndex].animal!
-                          .title!,
+                      text: cubit.searchModel!.data![outIndex].title.toString(),
                     ),
                     ViewAnimalItem(
-                      text: cubit
-                          .getNotificationsModel!.data![outIndex].animal!.type!,
+                      text: cubit.searchModel!.data![outIndex].type.toString(),
                     ),
                     ViewAnimalItem(
-                      text: cubit
-                          .getNotificationsModel!.data![outIndex].animal!.sex!,
+                      text: cubit.searchModel!.data![outIndex].sex.toString(),
                     ),
                     ViewAnimalItem(
-                      text: cubit
-                          .getNotificationsModel!.data![outIndex].animal!.age!,
+                      text: cubit.searchModel!.data![outIndex].age.toString(),
                     ),
                     ViewAnimalItem(
-                      text: cubit.getNotificationsModel!.data![outIndex].animal!
-                          .location!,
+                      text: cubit.searchModel!.data![outIndex].location
+                          .toString(),
                     ),
                     ViewAnimalItem(
                       height: 200,
-                      text: cubit.getNotificationsModel!.data![outIndex].animal!
-                          .adaptReason!,
+                      text: cubit.searchModel!.data![outIndex].adaptReason
+                          .toString(),
                     ),
                     Container(
                       decoration: BoxDecoration(
@@ -139,8 +136,8 @@ class ViewAnimalNotificationScreen extends StatelessWidget {
                           ),
                           Container(
                             height: 100,
-                            child: cubit.getNotificationsModel!.data![outIndex]
-                                    .animal!.images!.isEmpty
+                            child: cubit.searchModel!.data![outIndex].images!
+                                    .isEmpty
                                 ? InkWell(
                                     onTap: () {},
                                     child: const Center(
@@ -181,7 +178,7 @@ class ViewAnimalNotificationScreen extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                             child: Image.network(
-                                              cubit.getNotificationsModel!.data![outIndex].animal!.images![index].path!.toString(),
+                                              cubit.searchModel!.data![outIndex].images![index].path!,
                                               fit: BoxFit.fill,
                                               height: 90,
                                               width: 90,
@@ -196,44 +193,25 @@ class ViewAnimalNotificationScreen extends StatelessWidget {
                                             ),
                                           )).p(12);
                                     },
-                                    itemCount: cubit.getNotificationsModel!
-                                        .data![outIndex].animal!.images!.length,
+                                    itemCount: cubit.searchModel!
+                                        .data![outIndex].images!.length,
                                   ),
                           )
                         ],
                       ),
                     ).hP16.vP16,
-                    state is AcceptRequestLoadingState ||
-                            state is RejectRequestLoadingState
+                    state is BuyAnimalLoadingState
                         ? AppLoadingProgress().bP16
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              defaultTextButton(
-                                function: () {
-                                  cubit.acceptRequest(
-                                      orderId:
-                                          "${cubit.getNotificationsModel!.data![outIndex].id}");
-                                },
-                                text: S.of(context).accept,
-                                width: AppSizes.getScreenWidth(context) * 0.35,
-                                color: KselectedTabColor,
-                              ),
-                              defaultTextButton(
-                                hasBorder: true,
-                                function: () {
-                                  cubit.rejectRequest(
-                                      orderId:
-                                          "${cubit.getNotificationsModel!.data![outIndex].id}");
-                                },
-                                text: S.of(context).reject,
-                                color: Colors.white,
-                                borderColor: Colors.red,
-                                width: AppSizes.getScreenWidth(context) * 0.35,
-                                textColor: Colors.red,
-                              ),
-                            ],
-                          ).bP16,
+                        : defaultTextButton(
+                            function: () {
+                              cubit.buyAnimal(
+                                  animalId:
+                                      "${cubit.searchModel!.data![outIndex].id}");
+                            },
+                            text: S.of(context).askForAdoption,
+                            color: KselectedTabColor,
+                            width: AppSizes.getScreenWidth(context),
+                          ).bP16.hP16,
                   ],
                 ),
               ],

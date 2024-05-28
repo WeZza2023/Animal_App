@@ -25,11 +25,13 @@ Widget defaultTextButton({
     SizedBox(
       width: width,
       child: TextButton(
+
         onPressed: function,
         style: TextButton.styleFrom(
+
           backgroundColor: color ?? KDefaultColor,
           side: hasBorder != null
-              ?  BorderSide(color: borderColor ?? KselectedTabColor, width: 2)
+              ? BorderSide(color: borderColor ?? KselectedTabColor, width: 2)
               : null,
         ),
         child: Row(
@@ -57,9 +59,40 @@ Widget defaultTextButton({
         ),
       ),
     );
+Widget AppPopupDialog(
+    {required List<Widget> body,
+      required String title,
+      required String textB1,
+      required String textB2,
+      required Function() onTapB1,
+      required Function() onTapB2,
+      Color? colorB1,
+      Color? colorB2}) {
+  return AlertDialog(
+    content: SingleChildScrollView(
+      child: Column(
+        children: body,
+      ),
+    ),
+    title: Center(child: BodyLargeText(title)),
+    actions: [
+      defaultTextButton(
+        text: textB1,
+        function: onTapB1,
+        color: colorB1,
+      ),
+      defaultTextButton(
+        text: textB2,
+        function: onTapB2,
+        color: colorB2,
+      )
+    ],
+  );
+}
 
 Widget DefaultTab({
   required ThemeImageIcon icon,
+  ThemeImageIcon? secIcon,
   String? title,
   Color? titleColor,
   required Color? iconColor,
@@ -86,17 +119,40 @@ Widget DefaultTab({
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (title != null)
-            BodyMediumText(
-              title,
-              color: titleColor,
+            Row(
+              children: [
+                BodyMediumText(
+                  title,
+                  color: titleColor,
+                ),
+                const SizedBox(
+                  width: 8,
+                ),
+              ],
             ),
-          const SizedBox(
-            width: 8,
-          ),
-          ThemeImageIconWidget(
-            icon,
-            scale: 2,
-            color: iconColor,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ThemeImageIconWidget(
+                icon,
+                scale: 2,
+                color: iconColor,
+              ),
+              if (secIcon != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    ThemeImageIconWidget(
+                      secIcon,
+                      scale: 2.5,
+                      color: iconColor,
+                    ),
+                  ],
+                ),
+            ],
           ),
         ],
       ),
@@ -405,6 +461,88 @@ Widget NotificationItem({
       ).hP8.bP16,
     );
 
+Widget SearchItem({
+  required String age,
+  required String name,
+  required String subTitle,
+  required Function() onTap,
+  required String location,
+  required String image,
+}) =>
+    InkWell(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          border: const BorderDirectional(
+            bottom: BorderSide(color: KDefaultColor, width: 1),
+            end: BorderSide(color: KDefaultColor, width: 1),
+          ),
+          borderRadius: BorderRadius.circular(30),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                blurRadius: 3,
+                spreadRadius: 1),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(20)),
+                  child: Image.network(
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return AppLoadingProgress();
+                    },
+                    errorBuilder: (context, error, stackTrace) =>
+                        AppLoadingFailed(big: false),
+                    image,
+                    height: 50,
+                    width: 70,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                const SizedBox(
+                  width: 12,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BodyLargeText(
+                      name,
+                      weight: FontWeight.bold,
+                    ).bP8,
+                    BodyMediumText(
+                      subTitle,
+                      weight: FontWeight.bold,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                BodyMediumText(
+                  age,
+                  color: KMaintextColor,
+                  weight: FontWeight.bold,
+                ).bP8,
+                BodySmallText(
+                  location,
+                  color: Colors.grey,
+                ),
+              ],
+            ),
+          ],
+        ).p8.hP8,
+      ).hP8.tP16,
+    );
+
 SnackBar AppSnackBar({
   required String content,
   required Color color,
@@ -464,29 +602,27 @@ Widget CountryCodesSheet({
   );
 }
 
+Widget AppLoadingProgress() => Center(
+      child: ClipRRect(
+          borderRadius: BorderRadius.circular(200),
+          child: LottieBuilder.asset(
+            "assets/icons/loading.json",
+            height: 50,
+            width: 50,
+            repeat: true,
+          )),
+    );
 
-Widget AppLoadingProgress() =>  Center(
-  child: ClipRRect(
-      borderRadius: BorderRadius.circular(200),
-      child: LottieBuilder.asset(
-        "assets/icons/loading.json",
-        height: 50,
-        width: 50,
-        repeat: true,
-      )),
-);
-
-Widget AppLoadingFailed() =>  Center(
-  child: LottieBuilder.asset(
-    "assets/icons/fail.json",
-    height: 100,
-    width: 100,
-    repeat: true,
-  ),
-);
-
-
-
+Widget AppLoadingFailed({required bool big}) => ClipRRect(
+      child: Center(
+        child: LottieBuilder.asset(
+          "assets/icons/fail.json",
+          height: big ? 90 : 50,
+          width: big ? 90 : 70,
+          repeat: true,
+        ),
+      ),
+    );
 
 Widget ViewAnimalItem({required String text, double? height}) => Container(
       height: height,
@@ -508,7 +644,10 @@ Widget ViewAnimalItem({required String text, double? height}) => Container(
       ),
       child: Row(
         children: [
-          BodySmallText(text,weight: FontWeight.bold,),
+          BodySmallText(
+            text,
+            weight: FontWeight.bold,
+          ),
         ],
       ).p25,
     ).hP16.tP16;

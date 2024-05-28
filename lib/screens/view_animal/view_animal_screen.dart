@@ -20,7 +20,18 @@ class ViewAnimalScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var cubit = BlocProvider.of<HomeCubit>(context);
     return BlocConsumer<HomeCubit, HomeState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is BuyAnimalSuccessState) {
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            AppSnackBar(content: S.of(context).yourRequestHasBeenSentSuccessfully, color: Colors.green)
+          );
+        }else if (state is BuyAnimalErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              AppSnackBar(content: state.error, color: Colors.red)
+          );
+        }
+      },
       builder: (context, state) => Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.transparent,
@@ -174,14 +185,17 @@ class ViewAnimalScreen extends StatelessWidget {
                                             borderRadius:
                                                 BorderRadius.circular(12),
                                             child: Image.network(
-                                              "${ApiConstants.baseUrlNOAPI}storage/{cubit.getAnimalsModel!.data!.animals![outIndex].images![index].path}",
+                                              cubit.getAnimalsModel!.data!.animals![outIndex].images![index].path.toString(),
                                               fit: BoxFit.fill,
                                               height: 90,
                                               width: 90,
-                                              loadingBuilder: (context, child, loadingProgress) => AppLoadingProgress(),
+                                              loadingBuilder: (context, child, loadingProgress) {
+                                                if (loadingProgress == null) return child;
+                                                return AppLoadingProgress();
+                                              },
                                               errorBuilder: (context, error,
                                                       stackTrace) =>
-                                                  AppLoadingFailed(),
+                                                  AppLoadingFailed(big: true),
                                             ),
                                           )).p(12);
                                     },

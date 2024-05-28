@@ -40,10 +40,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "cat": MessageLookupByLibrary.simpleMessage("قطة"),
         "cats": MessageLookupByLibrary.simpleMessage("قطط"),
+        "chooseStrongerPassword": MessageLookupByLibrary.simpleMessage(
+            "يجب ان تكون كلمة المرور اكثر من 10 حروف او ارقام"),
         "city": MessageLookupByLibrary.simpleMessage("المدينة"),
         "commonQuestions":
             MessageLookupByLibrary.simpleMessage("الاسئلة الشائعة"),
         "confirmPost": MessageLookupByLibrary.simpleMessage("تاكيد النشر"),
+        "confirmYourEmail":
+            MessageLookupByLibrary.simpleMessage("تاكيد بريدك الالكتروني"),
         "contactUs": MessageLookupByLibrary.simpleMessage("تواصل معنا"),
         "continueWith": MessageLookupByLibrary.simpleMessage("الاستمرار عبر"),
         "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
@@ -117,20 +121,26 @@ class MessageLookup extends MessageLookupByLibrary {
         "reject": MessageLookupByLibrary.simpleMessage("رفض"),
         "rejected": MessageLookupByLibrary.simpleMessage("مرفوض"),
         "requests": MessageLookupByLibrary.simpleMessage("الطلبات"),
+        "resend": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
         "search": MessageLookupByLibrary.simpleMessage("البحث ..."),
         "selectyourcountrycode":
             MessageLookupByLibrary.simpleMessage("اختر كود الدولة الخاص بك"),
         "signupError": MessageLookupByLibrary.simpleMessage("خطأ في التسجيل."),
         "signupSuccessfully":
             MessageLookupByLibrary.simpleMessage("تم التسجيل بنجاح."),
-        "step1":
-            MessageLookupByLibrary.simpleMessage("1. تأكد من ادخال رقم صحيح"),
-        "step2":
-            MessageLookupByLibrary.simpleMessage("2. انقر على الرابط التالي"),
+        "step1": MessageLookupByLibrary.simpleMessage(
+            "1. تحقق من صندوق بريدك الالكتروني"),
+        "step2": MessageLookupByLibrary.simpleMessage(
+            "2. قم بتأكيد البريد الالكتروني"),
         "step3":
-            MessageLookupByLibrary.simpleMessage("3. قم بارسال الرمز التحقيقي"),
-        "step4": MessageLookupByLibrary.simpleMessage("4. العودة الى التطبيق"),
-        "step5": MessageLookupByLibrary.simpleMessage("5. انقر على تم"),
+            MessageLookupByLibrary.simpleMessage("3. قم بالعودة الى التطبيق"),
+        "step4": MessageLookupByLibrary.simpleMessage("4. انقر على تم"),
+        "thereIsNoAnimalWithThisName":
+            MessageLookupByLibrary.simpleMessage("لا يوجد حيوان بهذا الاسم"),
+        "thereIsNoAnimalsAddedYet":
+            MessageLookupByLibrary.simpleMessage("لم يتم اضافة اي حيوانات بعد"),
+        "thereIsNoResultsInThisPage": MessageLookupByLibrary.simpleMessage(
+            "لا يوجد نتائج في هذه الصفحة"),
         "thisOrderIsPending": MessageLookupByLibrary.simpleMessage(
             "هذا الطلب معلق, يرجى الانتظار"),
         "thisOrderIsRefused":
@@ -141,9 +151,15 @@ class MessageLookup extends MessageLookupByLibrary {
                 "لاكمال الطلب الخاص بك، يرجى تنفيذ عملية الدفع"),
         "verifyYourEmailWhatsapp": MessageLookupByLibrary.simpleMessage(
             "تحقق من بريدك الالكتروني بواسطة واتساب"),
+        "youCanMoveToTheNextPage": MessageLookupByLibrary.simpleMessage(
+            "يمكنك الانتقال الي الصفحة التالية"),
+        "youDidNotPostAnyAnimal":
+            MessageLookupByLibrary.simpleMessage("لم تقم بنشر اي حيوان أليف"),
         "youdidnotAdoptanyAnimal":
             MessageLookupByLibrary.simpleMessage("لم تقم بتبني اي حيوان"),
         "youdidnotRequestanyAnimal":
-            MessageLookupByLibrary.simpleMessage("لم تقم بطلب اي حيوان")
+            MessageLookupByLibrary.simpleMessage("لم تقم بطلب اي حيوان"),
+        "yourRequestHasBeenSentSuccessfully":
+            MessageLookupByLibrary.simpleMessage("تم ارسال الطلب بنجاح")
       };
 }

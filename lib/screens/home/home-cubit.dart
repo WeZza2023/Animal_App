@@ -2,6 +2,7 @@ import 'package:animal_app/enum/icons.dart';
 import 'package:animal_app/generated/l10n.dart';
 import 'package:animal_app/models/get_animals_model.dart';
 import 'package:animal_app/models/get_notifications_model.dart';
+import 'package:animal_app/models/search_model.dart';
 import 'package:animal_app/network/api_constants.dart';
 import 'package:animal_app/network/dio_helper.dart';
 import 'package:animal_app/screens/home/layouts/add-animal-layout.dart';
@@ -22,16 +23,21 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(InitialState());
 
   var logger = Logger();
+  final searchController = TextEditingController();
+
 
   int currentTabIndex = 0;
   int currentNavIndex = 0;
   int currentPage = 1;
+  Color searchIconColor = Colors.transparent;
+  Color iconColor = Colors.white;
   bool isSearcBarShown = false;
   List<XFile> pickedImages = [];
   List<MultipartFile> imageFiles = [];
   ImagePicker picker = ImagePicker();
   GetAnimalsModel? getAnimalsModel;
   GetRequestsModel? getRequestsModel;
+  SearchModel? searchModel;
   GetNotificationsModel? getNotificationsModel;
   String filterAnimals = '';
   double itemOpacity = 1;
@@ -47,11 +53,11 @@ class HomeCubit extends Cubit<HomeState> {
   ThemeImageIcon selectedCatTabIcon = ThemeImageIcon.cat;
   ThemeImageIcon selectedDogTabIcon = ThemeImageIcon.dog;
 
-  Future<void> ChangeBottomNavBar(int index) async{
+  Future<void> ChangeBottomNavBar(int index) async {
     currentNavIndex = index;
 
     if (currentNavIndex == 1) {
-     await getRequests();
+      await getRequests();
     }
     emit(IsNavChangedState());
   }
@@ -81,6 +87,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   void changeSearchBar() {
     isSearcBarShown = !isSearcBarShown;
+    searchController.clear();
+    searchIconColor = isSearcBarShown ? Colors.white : Colors.transparent;
+    iconColor = isSearcBarShown ? KDefaultColor : Colors.white;
     emit(IsSearchBarShownState());
   }
 
@@ -108,7 +117,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> getAnimals({required int currentPage}) async {
     emit(GetAnimalsLoadingState());
-   await DioHelper.getData(
+    await DioHelper.getData(
             url: "${ApiConstants.animal}?page=$currentPage",
             token: ApiConstants.userToken)
         .then((value) {
@@ -143,10 +152,10 @@ class HomeCubit extends Cubit<HomeState> {
       'location': location,
       'age': age,
       'adapt_reason': reason,
-      'images': imageFiles,
+      'images[]': imageFiles,
     };
     print(json);
-   await DioHelper.postData(
+    await DioHelper.postData(
       url: ApiConstants.addAnimal,
       token: ApiConstants.userToken,
       data: FormData.fromMap(json),
@@ -167,7 +176,7 @@ class HomeCubit extends Cubit<HomeState> {
     required String animalId,
   }) async {
     emit(BuyAnimalLoadingState());
-   await DioHelper.postData(
+    await DioHelper.postData(
       url: ApiConstants.buy,
       data: {
         'animal_id': animalId,
@@ -187,7 +196,8 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> getRequests() async {
     emit(GetRequestsLoadingState());
-   await DioHelper.getData(url: ApiConstants.requests, token: ApiConstants.userToken)
+    await DioHelper.getData(
+            url: ApiConstants.requests, token: ApiConstants.userToken)
         .then((value) {
       logger.d(value.data);
       getRequestsModel = GetRequestsModel.fromJson(value.data);
@@ -218,7 +228,7 @@ class HomeCubit extends Cubit<HomeState> {
     required String orderId,
   }) async {
     emit(AcceptRequestLoadingState());
-   await DioHelper.postData(
+    await DioHelper.postData(
         url: ApiConstants.accept,
         token: ApiConstants.userToken,
         data: {
@@ -238,7 +248,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> rejectRequest({required String orderId}) async {
     emit(AcceptRequestLoadingState());
-   await DioHelper.postData(
+    await DioHelper.postData(
         url: ApiConstants.refuse,
         token: ApiConstants.userToken,
         data: {
@@ -253,6 +263,23 @@ class HomeCubit extends Cubit<HomeState> {
       print(error.toString());
       print('Reject Request Failed');
       emit(AcceptRequestErrorState(error.toString()));
+    });
+  }
+
+  Future<void> searchAnimal({required String name}) async {
+    emit(SearchAnimalLoadingState());
+    await DioHelper.getData(
+        url: ApiConstants.search,
+        token: ApiConstants.userToken,
+        query: {'keyword': name}).then((value) {
+      logger.d(value.data);
+      searchModel = SearchModel.fromJson(value.data);
+      print('Search Animal Success');
+      emit(SearchAnimalSuccessState(searchModel!));
+    }).catchError((error) {
+      print(error.toString());
+      print('Search Animal Failed');
+      emit(SearchAnimalErrorState(error.toString()));
     });
   }
 }
